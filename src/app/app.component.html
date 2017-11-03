@@ -1,2 +1,24 @@
-<input type="text" [(ngModel)]="name">
-<p>{{ name }}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>{{ name }}</h3>
+      <hr>
+      <app-servers></app-servers>
+      <success-message></success-message>
+      <warning-message></warning-message>
+      <input 
+        type="text"
+        [(ngModel)]="username">
+        <input 
+          type="submit" 
+          (click)="resetUsername()"
+          [disabled]="username.length < 1">
+        <p>{{ username }}</p>
+        <button class="btn btn-primary" (click)="displayDetails($event)">Display Details</button>
+        <p *ngIf="detailsShouldBeShown">Seven + Fish = Lemon</p>
+        <ul *ngFor="let event of detailButtonClickEvents; let i = index">
+          <li [ngStyle]="{'background-color': i >= 5 && 'darkblue'}">{{event.timeStamp}}</li>
+        </ul>
+    </div>
+  </div>
+</div>
